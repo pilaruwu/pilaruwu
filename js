@@ -134,4 +134,109 @@ console.log(primero,segundo,resto);
     console.log(numero);
  }
 */
+function suma (a,b, callback){
+    let c = a+b;
+    callback(c);
+}
+function mostrarMensaje(texto){
+    console.log(texto);
+}
+suma(5,7,mostrarMensaje);
+
+
+//Ejemplo de callback en arreglos
+
+const numeros=[0,1,2,3,4,5,6,7,8,9,10]; 
+
+// Aplica la funcion a cada elemento del arreglopor iteracion
+numeros.forEach((n)=>console.log(n**2));
+
+//consultar arreglo.map() y arreglo.filter()
+
+//set timeout demora el tiempo en que se tarda en ejecutar una funcion
+
+function incrementarUno(a,callback){
+    setTimeout(()=>{
+        a+=1;
+        console.log(`El resultado es ${a}`);
+        callback(a);
+    },2000);
+    
+}
+incrementarUno(7,(a)=>{console.log("El resultado total es "+a)});
+
+
+//funciona pero es muy largo
+function sumarCinco(a,callback){
+    setTimeout(()=>{
+        a+=1;
+        console.log(`El resultado es ${a}`);
+    },3000);
+    setTimeout(()=>{
+        a+=1;
+        console.log(`El resultado es ${a}`);   
+    },3000);
+    setTimeout(()=>{
+        a+=1;
+        console.log(`El resultado es ${a}`);
+    },3000);
+    setTimeout(()=>{
+        a+=1;
+        console.log(`El resultado es ${a}`);
+    },3000);
+    setTimeout(()=>{
+        a+=1;
+        console.log(`El resultado es ${a}`);
+        callback(a);
+    },3000);
+}
+sumarCinco(7,(a)=>{console.log("El resultado total es "+a)});
+
+
+//PROMESAS
+
+//las promesas retornan algo cuando la promesa se cumple y tambien cuando no se cumple
+// reescribir funcion suma como una promesa
+
+//reject rechaza la promesa
+//resolve resuelve la promesa
+//then se ejecuta cuando la promesa se cumple
+//catch se ejecuta cuando la promesa no se cumple
+
+//Producir código
+function suma (a,b){
+return new Promise((resolve,reject)=>{
+    //cuando no se puede hacer la suma
+    if(typeof a !=="number" || typeof b !=="number"){
+        reject(new Error("No se pudo realizar la suma"));
+    }
+    else {
+        resolve(a+b);
+    }
+    
+});
+}
+//Consumir código
+suma(7,'')
+.then(resultado=>console.log(resultado))//en el caso del resolve
+.catch(error=>console.error(error.message));//en el caso del reject
+
+
+//ASYNC
+
+
+async function suma (a,b){
+    
+    if(typeof a !=="number" || typeof b !=="number"){
+            throw new Error("No se pudo realizar la suma");
+        }
+        else {
+            return a+b;
+        }
+        
+    };
+    suma(7,'')
+.then(resultado=>console.log(resultado))
+.catch(error=>console.error(error.message));
+    */
 
